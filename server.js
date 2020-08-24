@@ -11,6 +11,8 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+const port = process.env.PORT || 8080
+
 // const pusher = new Pusher({
 //   appId: process.env.PUSHER_APP_ID,
 //   key: process.env.PUSHER_APP_KEY,
@@ -66,4 +68,8 @@ app.post('/join', (req, res) => {
   res.send(chat)
 })
 
-app.listen(process.env.PORT || 2000, () => console.log('Listening at 2000'))
+// app.listen(process.env.PORT || 2000, () => console.log('Listening at 2000'))
+app.listen(port,()=>{
+  console.log("Server started on port" + port);
+})
+

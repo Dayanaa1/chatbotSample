@@ -9,7 +9,7 @@ import {tap} from 'rxjs/operators';
 })
 export class ChatService {
   user: {displayName: string, email: string};
-  private _endPoint = 'http://localhost:2000'; // normally you use environment.ts
+  // private _endPoint = 'http://localhost:2000'; // normally you use environment.ts
   private _channel: any;
 
   constructor(private _pusherService: PusherService, private _http: HttpClient) {
@@ -17,7 +17,7 @@ export class ChatService {
   }
 
   join(param): Observable<any> {
-    return this._http.post(`${this._endPoint}/join`, param)
+    return this._http.post(`/join`, param)
     .pipe(tap(data => {
       this.user = param;
     }));
@@ -29,7 +29,7 @@ export class ChatService {
       type: 'human',
       ...this.user
     };
-    return this._http.post(`${this._endPoint}/message`, param);
+    return this._http.post(`/message`, param);
   }
 
   getChannel() {
